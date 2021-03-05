@@ -322,7 +322,7 @@ export default {
     },
     less() {
       let app = this
-      axios.get('http://localhost:47263/soa1/human-beings/count/car/cool/less/' + this.car, {headers: {
+      axios.get('https://localhost:47263/soa1/human-beings/count/car/cool/less/' + this.car, {headers: {
           'Content-Type': 'application/xml',
         }}).then((response) => {
         if (response.data !== '') {
@@ -334,7 +334,7 @@ export default {
     },
     equal() {
       let app = this
-      axios.get('http://localhost:47263/soa1/human-beings/count/car/cool/equals/' + this.car, {headers: {
+      axios.get('https://localhost:47263/soa1/human-beings/count/car/cool/equals/' + this.car, {headers: {
           'Content-Type': 'application/xml',
         }}).then((response) => {
         if (response.data !== '') {

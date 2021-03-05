@@ -146,7 +146,7 @@ export default {
     getAll(filterBeing = {}, sortingBeing = {}, meta = {page: 1, count: 20}) {
       let filterQ = this.prepareFilter(filterBeing)
       let sortQ = this.prepareSort(sortingBeing)
-      var url = 'http://localhost:47263/soa1/human-beings'
+      var url = 'https://localhost:47263/soa1/human-beings'
       url += '?page=' + meta.page + '&count=' + meta.count
       if (sortQ !== '') {
         url += '&' + sortQ
@@ -160,7 +160,7 @@ export default {
       let app = this
       let xml = this.prepareBeing(being)
       console.log("sending: " + xml)
-      axios.post('http://localhost:47263/soa1/human-beings', xml, {headers: {
+      axios.post('https://localhost:47263/soa1/human-beings', xml, {headers: {
           'Content-Type': 'application/xml',
         }}).then(response => {
         if (response.status === 201) {
@@ -176,14 +176,14 @@ export default {
     deleteBeing(index) {
       let app = this
       let idToDelete = this.humanBeings[index].id
-      axios.delete('http://localhost:47263/soa1/human-beings/' + idToDelete).then(() => {
+      axios.delete('https://localhost:47263/soa1/human-beings/' + idToDelete).then(() => {
         app.getAll()
       }).catch(() => {
         // alert
       })
     },
     findByName(name) {
-      this.getBeingsFromUrl('http://localhost:47263/soa1/human-beings/name/starts_with/' + name)
+      this.getBeingsFromUrl('https://localhost:47263/soa1/human-beings/name/starts_with/' + name)
     },
     openEditForm(index, being) {
       being.isEditFormOpen = true
@@ -199,7 +199,7 @@ export default {
       let idToEdit = this.humanBeings[index].id
       let xml = this.prepareBeing(being)
       console.log("sending: " + xml)
-      axios.put('http://localhost:47263/soa1/human-beings/' + idToEdit, xml, {headers: {
+      axios.put('https://localhost:47263/soa1/human-beings/' + idToEdit, xml, {headers: {
           'Content-Type': 'application/xml',
         }}).then(() => {
         this.closeEditForm(index)
